@@ -8,6 +8,7 @@ interface JobCardProps {
   isOpen: boolean;
   toggleExpand: (id: string) => void;
   coverLetters: CoverLetter[];
+  jobs: Job[];
   updateJob: (id: string, updates: Partial<Job>) => Promise<void>;
   updateJobStatus: (id: string, status: JobStatus) => Promise<void>;
   ALL_STATUSES: JobStatus[];
@@ -19,6 +20,7 @@ export function JobCard({
   isOpen,
   toggleExpand,
   coverLetters,
+  jobs,
   updateJob,
   updateJobStatus,
   ALL_STATUSES,
@@ -127,11 +129,13 @@ export function JobCard({
                   onChange={e => updateJob(job.id, { coverLetterId: e.target.value })}
                 >
                   <option value="">No cover letter linked</option>
-                  {coverLetters.map(cl => (
-                    <option key={cl.id} value={cl.id}>
-                      {cl.title || `${cl.company} - ${cl.role}`}
-                    </option>
-                  ))}
+                  {coverLetters
+                    .filter(cl => !jobs.some(j => j.id !== job.id && j.coverLetterId === cl.id))
+                    .map(cl => (
+                      <option key={cl.id} value={cl.id}>
+                        {cl.title || `${cl.company} - ${cl.role}`}
+                      </option>
+                    ))}
                 </select>
                 {linkedCL && (
                   <div className={styles.clActions}>

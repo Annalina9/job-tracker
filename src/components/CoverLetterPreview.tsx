@@ -81,7 +81,12 @@ function formatBody(text: string) {
   return paras.map((para, i) => {
     // It's a callout if it's the 3rd body paragraph, OR if it matches the "Insight(s):" pattern
     const matchesKeyword = /^((?:[A-Za-z\s]+)?Insights?:)(.*)/is.exec(para);
-    const isCallout = i === targetCalloutIdx || matchesKeyword !== null;
+    // Check if this paragraph is likely the signature block (last 2 paragraphs, usually short)
+    const isSignatureBlock = i >= paras.length - 2 && para.length < 100;
+    
+    // Auto-trigger on 3rd paragraph, ONLY if it doesn't look like the end of the letter
+    const isAutoCallout = i === targetCalloutIdx && !isSignatureBlock;
+    const isCallout = isAutoCallout || matchesKeyword !== null;
     
     if (isCallout) {
       // If there's a colon in the first sentence/phrase, bold it so it looks structured

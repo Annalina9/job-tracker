@@ -98,6 +98,7 @@ export default function TrackerPage() {
               isOpen={expanded.has(job.id)}
               toggleExpand={toggleExpand}
               coverLetters={coverLetters}
+              jobs={jobs}
               updateJob={updateJob}
               updateJobStatus={updateJobStatus}
               ALL_STATUSES={ALL_STATUSES}

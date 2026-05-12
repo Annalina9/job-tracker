@@ -1,0 +1,318 @@
+.page {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 40px 32px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.subtitle { color: var(--text-dim); font-size: 14px; }
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.filtersRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.searchWrap {
+  position: relative;
+  max-width: 380px;
+  flex: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 14px 10px 36px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: border-color 0.15s ease;
+}
+.searchInput:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.searchInput::placeholder { color: var(--text-muted); }
+
+.expandButtons {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.filterPills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pill:hover { border-color: var(--border-bright); color: var(--text); }
+.pillActive { background: var(--surface-3); border-color: var(--accent); color: var(--text); }
+
+.pillCount {
+  background: var(--surface-3);
+  border-radius: 999px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.loadingWrap {
+  display: flex;
+  justify-content: center;
+  padding: 64px;
+}
+
+/* ============================================================
+   JOB LIST — Accordion Cards
+   ============================================================ */
+.jobList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.jobCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.15s ease;
+}
+.jobCard:hover { border-color: var(--border-bright); }
+.jobCardOpen {
+  border-color: var(--border-bright);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Summary Row (always visible) */
+.summaryRow {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  gap: 14px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+  user-select: none;
+}
+.summaryRow:hover { background: var(--surface-2); }
+
+.expandIcon {
+  font-size: 12px;
+  color: var(--text-muted);
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: color 0.1s ease;
+}
+.jobCardOpen .expandIcon { color: var(--accent-2); }
+
+.jobInfo { flex: 1; min-width: 0; }
+
+.jobTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.jobCompany {
+  font-size: 13px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jobMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.jobSalary {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.clLinked {
+  font-size: 14px;
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* Status dropdown */
+.statusSelect {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.15s ease;
+}
+.statusSelect:focus { outline: none; border-color: var(--accent); }
+
+/* Status colors */
+.statusWishlist       { background: var(--surface-2); color: var(--text-muted); border-color: var(--border); }
+.statusReady          { background: rgba(59, 130, 246, 0.12); color: var(--blue); border-color: rgba(59, 130, 246, 0.25); }
+.statusApplied        { background: rgba(99, 102, 241, 0.12); color: var(--accent-2); border-color: rgba(99, 102, 241, 0.25); }
+.statusPhone          { background: rgba(245, 158, 11, 0.12); color: var(--amber); border-color: rgba(245, 158, 11, 0.25); }
+
+.statusPassed {
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+  border-color: rgba(100, 116, 139, 0.2);
+}
+
+.statusArchived {
+  background: var(--surface);
+  color: var(--text-dim);
+  border-style: dashed;
+  border-color: var(--border);
+  opacity: 0.7;
+}
+.statusInterview      { background: rgba(168, 85, 247, 0.12); color: var(--purple); border-color: rgba(168, 85, 247, 0.25); }
+.statusOffer          { background: rgba(6, 182, 212, 0.12); color: var(--teal); border-color: rgba(6, 182, 212, 0.25); }
+.statusAccepted       { background: rgba(34, 197, 94, 0.12); color: var(--green); border-color: rgba(34, 197, 94, 0.25); }
+.statusRejected       { background: rgba(244, 63, 94, 0.12); color: var(--rose); border-color: rgba(244, 63, 94, 0.25); }
+.statusPassed         { background: var(--surface-2); color: var(--text-muted); border-color: var(--border); }
+
+/* ============================================================
+   EXPANDED DETAIL
+   ============================================================ */
+.detail {
+  border-top: 1px solid var(--border);
+  padding: 20px 18px 20px 48px;
+  animation: slideDown 0.2s ease-out;
+  background: var(--bg-2);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; }
+  to { opacity: 1; max-height: 600px; }
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+.jobCardArchived {
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}
+.jobCardArchived:hover {
+  opacity: 0.8;
+  filter: grayscale(0);
+}
+
+.detailLeft, .detailRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detailSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detailLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+}
+
+.detailText {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.notesEditor {
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  min-height: 100px;
+  resize: vertical;
+  background: var(--surface) !important;
+}
+
+.clActions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .jobSalary { display: none; }
+}
+@media (max-width: 768px) {
+  .page { padding: 20px 16px; }
+  .detailGrid { grid-template-columns: 1fr; }
+  .filtersRow { flex-direction: column; align-items: stretch; }
+  .expandButtons { justify-content: flex-end; }
+}

@@ -1,0 +1,127 @@
+.loadingScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow orbs */
+.orb1, .orb2, .orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.orb1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2), transparent 70%);
+  top: -100px; left: -100px;
+}
+.orb2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%);
+  bottom: -50px; right: -50px;
+}
+.orb3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.1), transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 600px;
+  animation: fadeUp 0.6s ease-out both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-bright);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--accent-2);
+  font-weight: 500;
+  margin-bottom: 28px;
+  letter-spacing: 0.3px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.gradient {
+  background: linear-gradient(135deg, var(--accent-2) 0%, var(--teal) 50%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.0625rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.featureIcon {
+  font-size: 18px;
+}
+
+.signInBtn {
+  font-size: 15px;
+  padding: 14px 28px;
+  margin-bottom: 16px;
+}
+
+.disclaimer {
+  font-size: 12px;
+  color: var(--text-muted);
+}
